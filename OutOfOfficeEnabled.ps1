@@ -34,5 +34,14 @@ foreach ($mailbox in $mailboxes) {
     }
 }
 
+#Tenemos 2 modos de mostrar los resultados:
+# 1. Mostrar en consola o 2. Exportar a un archivo CSV. De momento, solo exportamos a CSV.
+
 # Mostramos los resultados en una tabla
-$resultados | Format-Table -AutoSize
+#$resultados | Format-Table -AutoSize
+
+# Exportar a archivo CSV
+$archivo = "Usuarios_Fuera_De_Oficina.csv"
+$resultados | Export-Csv -Path $archivo -NoTypeInformation -Encoding UTF8
+
+Write-Host "Exportación completada. Archivo generado: $archivo"
